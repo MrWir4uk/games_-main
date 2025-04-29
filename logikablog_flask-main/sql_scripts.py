@@ -10,6 +10,16 @@ def get_all_articles():
     
     return articles
 
+def get_all_genres():
+    conn = sqlite3.connect('blog.db')
+    cursor = conn.cursor()
+
+    cursor.execute('SELECT * FROM categories')
+    categories = cursor.fetchall()
+    conn.close()
+    
+    return categories
+
 def get_article(article_id):
     conn = sqlite3.connect('blog.db')
     cursor = conn.cursor()
@@ -20,6 +30,16 @@ def get_article(article_id):
     
     return articles
 
+
+def get_articles_genre(category_id):
+    conn = sqlite3.connect('blog.db')
+    cursor = conn.cursor()
+
+    cursor.execute('SELECT * FROM articles WHERE category_id=?', [category_id] )
+    articles = cursor.fetchall()
+    conn.close()
+    
+    return articles
 
 
 

@@ -33,10 +33,10 @@
                             Категорії
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Гонки</a></li>
-                            <li><a class="dropdown-item" href="#">RPG</a></li>
-                            <li><a class="dropdown-item" href="#">Стратегії</a></li>
-                            <li><a class="dropdown-item" href="#">Шутери</a></li>
+                            {% for genre_id, genre in genres %}
+                            <li><a class="dropdown-item" href="{{url_for('genre_page',genre_id=genre_id)}}">{{genre}}</a></li>
+                            {% endfor %}
+                           
                         </ul>
                     </li>
                 </ul>

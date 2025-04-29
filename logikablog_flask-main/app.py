@@ -3,11 +3,21 @@ from sql_scripts import *
 
 app = Flask(__name__)  # Створюємо веб–додаток Flask
 
+@app.context_processor
+def get_context():
+    genres = get_all_genres()
+    return {'genres': genres}  
 
 @app.route("/")  # Вказуємо url-адресу для виклику функції
 def index():
     articles = get_all_articles()
     return render_template("index.html", articles=articles)  # html-сторінка, що повертається у браузер
+
+@app.route("/genre/<int:genre_id>")  # Вказуємо url-адресу для виклику функції
+def genre_page(genre_id):
+    articles = get_articles_genre(genre_id)
+    return render_template("genre_page.html", articles=articles)  # html-сторінка, що повертається у браузер
+
 
 @app.route('/article/<int:article_id>')
 def article_page(article_id):
