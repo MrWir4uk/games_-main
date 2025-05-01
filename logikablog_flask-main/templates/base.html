@@ -23,7 +23,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Головна</a>
+                        <a class="nav-link active" aria-current="page" href="{{url_for('index')}}">Головна</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#contactsModal">Контакти</a>
@@ -36,12 +36,14 @@
                             {% for genre_id, genre in genres %}
                             <li><a class="dropdown-item" href="{{url_for('genre_page',genre_id=genre_id)}}">{{genre}}</a></li>
                             {% endfor %}
-                           
                         </ul>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#aboutModal">Про автора</a>
+                    </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Шукати..." aria-label="Search">
+                <form action="{{url_for('search')}}" class="d-flex" role="search">
+                    <input required name="query" class="form-control me-2" type="search" placeholder="Шукати..." aria-label="Search">
                     <button class="btn btn-outline-light" type="submit">Пошук</button>
                 </form>
             </div>
@@ -64,7 +66,24 @@
                 <div class="modal-body">
                     <p><strong>Telegram:</strong> <a href="https://t.me/твій_нік" target="_blank" class="text-info">@твій_нік</a></p>
                     <p><strong>Instagram:</strong> <a href="https://instagram.com/твій_нік" target="_blank" class="text-info">@твій_нік</a></p>
-                    <p><strong>Email:</strong> <a href="mailto:твоя@пошта.com" class="text-info">твоя@пошта.com</a></p>
+                    <p><strong>Email:</strong> <a href="mailto:matviiv.nazar2010@gmail.com" class="text-info">matviiv.nazar2010@gmail.com</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальне вікно Про автора -->
+    <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="aboutModalLabel">Про автора</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Закрити"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Привіт! Мене звати Назар, я захоплююсь відеоіграми та створюю цей сайт, щоб ділитися цікавою інформацією про них.</p>
+                    <p>Моя мета — зробити геймерську спільноту ще цікавішою та дружнішою!</p>
+                    <p>Дякую, що завітали!</p>
                 </div>
             </div>
         </div>
