@@ -12,9 +12,9 @@ def get_context():
     return {'genres': genres}  
 
 @app.route("/search")  # Вказуємо url-адресу для виклику функції
-def seacrh():
+def search():
     query = request.args.get('query', '')  # Отримуємо параметр з url-адреси
-    articles = get_all_articles(query)
+    articles = search_articles(query)
     return render_template("search.html", articles=articles)  # html-сторінка, що повертається у браузер
 
 
